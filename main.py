@@ -3,8 +3,8 @@ import sqlite3
 import asyncio
 from datetime import datetime, timedelta
 import pytz
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, Document
-from telegram.ext import Application, CommandHandler, MessageHandler, CallbackContext, filters, ConversationHandler, ContextTypes
+from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, Document, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackContext, filters, ConversationHandler, ContextTypes, CallbackQueryHandler
 
 # Словник для збереження стану користувачів
 user_states = {}
@@ -55,17 +55,17 @@ LANGUAGES = {
         'report': '📊 Звіт',
         'settings': '⚙️ Налаштування',
         'back': '↩️ Назад',
-        'record_arrival': '👋 Записати час приходу',
-        'record_departure': '👋 Записати час відходу',
+        'record_arrival': '🟢 Прихід',
+        'record_departure': '🔴 Відхід',
         'choose_action': 'Оберіть дію:',
-        'daily_report': '📅 ЗВІТ ЗА СЬОГОДНІ',
-        'monthly_report': '📈 ЗВІТ ЗА МІСЯЦЬ',
-        'edit_report': '✏️ Редагувати звіт',
+        'daily_report': '📅 Сьогодні',
+        'monthly_report': '📈 Місяць',
+        'edit_report': '✏️ Редагувати',
         'choose_report_type': '📊 Оберіть тип звіту:',
-        'reset_time': '🔄 Скинути час',
-        'set_rate': '💰 Встановити ставку',
-        'set_timezone': '🕰 Встановити часовий пояс',
-        'history': '📊 Історія записів',
+        'reset_time': '🔄 Скинути',
+        'set_rate': '💰 Ставка',
+        'set_timezone': '🕰 Часовий пояс',
+        'history': '📊 Історія',
         'set_language': '🌐 Мова',
         'settings_title': '⚙️ Налаштування:',
         'arrival_recorded': '✅ Час приходу записано:',
@@ -104,17 +104,17 @@ LANGUAGES = {
         'report': '📊 Report',
         'settings': '⚙️ Settings',
         'back': '↩️ Back',
-        'record_arrival': '👋 Record arrival time',
-        'record_departure': '👋 Record departure time',
+        'record_arrival': '🟢 Arrival',
+        'record_departure': '🔴 Departure',
         'choose_action': 'Choose an action:',
-        'daily_report': '📅 TODAY\'S REPORT',
-        'monthly_report': '📈 MONTHLY REPORT',
-        'edit_report': '✏️ Edit report',
+        'daily_report': '📅 Today',
+        'monthly_report': '📈 Month',
+        'edit_report': '✏️ Edit',
         'choose_report_type': '📊 Choose report type:',
-        'reset_time': '🔄 Reset time',
-        'set_rate': '💰 Set hourly rate',
-        'set_timezone': '🕰 Set timezone',
-        'history': '📊 Records history',
+        'reset_time': '🔄 Reset',
+        'set_rate': '💰 Rate',
+        'set_timezone': '🕰 Timezone',
+        'history': '📊 History',
         'set_language': '🌐 Language',
         'settings_title': '⚙️ Settings:',
         'arrival_recorded': '✅ Arrival time recorded:',
@@ -153,17 +153,17 @@ LANGUAGES = {
         'report': '📊 Raport',
         'settings': '⚙️ Ustawienia',
         'back': '↩️ Wstecz',
-        'record_arrival': '👋 Zapisz czas przyjścia',
-        'record_departure': '👋 Zapisz czas wyjścia',
+        'record_arrival': '🟢 Przyjście',
+        'record_departure': '🔴 Wyjście',
         'choose_action': 'Wybierz akcję:',
-        'daily_report': '📅 RAPORT DZIENNY',
-        'monthly_report': '📈 RAPORT MIESIĘCZNY',
-        'edit_report': '✏️ Edytuj raport',
+        'daily_report': '📅 Dzisiaj',
+        'monthly_report': '📈 Miesiąc',
+        'edit_report': '✏️ Edytuj',
         'choose_report_type': '📊 Wybierz typ raportu:',
-        'reset_time': '🔄 Resetuj czas',
-        'set_rate': '💰 Ustaw stawkę godzinową',
-        'set_timezone': '🕰 Ustaw strefę czasową',
-        'history': '📊 Historia zapisów',
+        'reset_time': '🔄 Resetuj',
+        'set_rate': '💰 Stawka',
+        'set_timezone': '🕰 Strefa czasowa',
+        'history': '📊 Historia',
         'set_language': '🌐 Język',
         'settings_title': '⚙️ Ustawienia:',
         'arrival_recorded': '✅ Czas przyjścia zapisany:',
@@ -252,6 +252,24 @@ def get_local_time(user_id: int) -> datetime:
     """Отримати поточний час у часовому поясі користувача"""
     tz = pytz.timezone(get_user_timezone(user_id))
     return datetime.now(tz)
+
+def parse_time_input(time_str: str) -> str:
+    """Парсить введений час у форматі HH:MM або HH:MM:SS і повертає у форматі HH:MM:SS"""
+    time_str = time_str.strip()
+    
+    # Спробуємо спочатку формат HH:MM:SS
+    try:
+        datetime.strptime(time_str, '%H:%M:%S')
+        return time_str
+    except ValueError:
+        pass
+    
+    # Спробуємо формат HH:MM
+    try:
+        time_obj = datetime.strptime(time_str, '%H:%M')
+        return time_obj.strftime('%H:%M:00')
+    except ValueError:
+        raise ValueError("Неправильний формат часу")
 
 async def get_user_info(bot, user_id: int) -> dict:
     """Отримати інформацію про користувача з Telegram API"""
@@ -412,8 +430,7 @@ async def start(update: Update, context: CallbackContext) -> int:
     else:
         welcome_message = get_text(user_id, 'welcome_back')
     keyboard = [
-        [get_text(user_id, 'record_time')],
-        [get_text(user_id, 'report')],
+        [get_text(user_id, 'record_time'), get_text(user_id, 'report')],
         [get_text(user_id, 'settings')],
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -712,8 +729,11 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
         return WAITING_FOR_DATE
     if context.user_data.get('action') == 'delete':
         context.user_data['delete_date'] = selected_option
-        keyboard = [['✅ Так', '❌ Ні']]
-        reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+        keyboard = [
+            [InlineKeyboardButton("✅ Так", callback_data=f"delete_yes_{selected_option}"),
+             InlineKeyboardButton("❌ Ні", callback_data="delete_no")]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(
             f'❓ Ви впевнені, що хочете видалити запис за {selected_option}?',
             reply_markup=reply_markup
@@ -721,8 +741,7 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
         return DELETE_CONFIRM
     context.user_data['edit_date'] = selected_option
     keyboard = [
-        ['👋 Редагувати час приходу'],
-        ['👋 Редагувати час відходу'],
+        ['🟢 Час приходу', '🔴 Час відходу'],
         ['↩️ Назад']
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -733,8 +752,11 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
     return EDIT_TIME
 
 async def handle_delete_confirmation(update: Update, context: CallbackContext) -> int:
-    if update.message.text == '✅ Так':
-        date_to_delete = context.user_data.get('delete_date')
+    query = update.callback_query
+    await query.answer()
+    
+    if query.data.startswith("delete_yes_"):
+        date_to_delete = query.data.replace("delete_yes_", "")
         user_id = update.effective_user.id
         try:
             conn = sqlite3.connect('timekeeper.db')
@@ -743,23 +765,54 @@ async def handle_delete_confirmation(update: Update, context: CallbackContext) -
             c.execute('DELETE FROM time_records WHERE date = ? AND user_id = ?',
                       (date_to_delete, user_id))
             conn.commit()
-            await update.message.reply_text(f'✅ Запис за {date_to_delete} видалено')
-            return await start(update, context)
-        except sqlite3.Error:
-            await update.message.reply_text('❌ Не вдалося видалити запис. Спробуйте пізніше.')
-        finally:
+            await query.edit_message_text(f'✅ Запис за {date_to_delete} видалено')
             conn.close()
-    else:
-        await update.message.reply_text('❌ Видалення скасовано')
-    return await edit_report_menu(update, context)
+            # Повертаємо в головне меню
+            user_id = update.effective_user.id
+            keyboard = [
+                [get_text(user_id, 'record_time'), get_text(user_id, 'report')],
+                [get_text(user_id, 'settings')],
+            ]
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+            await context.bot.send_message(
+                chat_id=user_id,
+                text=get_text(user_id, 'welcome_back'),
+                reply_markup=reply_markup
+            )
+            return MAIN_MENU
+        except sqlite3.Error:
+            await query.edit_message_text('❌ Не вдалося видалити запис. Спробуйте пізніше.')
+            return MAIN_MENU
+    else:  # delete_no
+        await query.edit_message_text('❌ Видалення скасовано')
+        # Повертаємо в меню редагування
+        user_id = update.effective_user.id
+        keyboard = [
+            [get_text(user_id, 'daily_report'), get_text(user_id, 'monthly_report')],
+            [get_text(user_id, 'edit_report'), get_text(user_id, 'back')]
+        ]
+        reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+        await context.bot.send_message(
+            chat_id=user_id,
+            text=get_text(user_id, 'choose_report_type'),
+            reply_markup=reply_markup
+        )
+        return REPORT_MENU
 
 async def handle_time_edit(update: Update, context: CallbackContext) -> int:
     choice = update.message.text
     if choice == '↩️ Назад':
         return await edit_report_menu(update, context)
-    context.user_data['edit_type'] = 'arrival_time' if 'приходу' in choice else 'departure_time'
+    # Визначаємо тип за емодзі
+    if '🟢' in choice or 'приходу' in choice.lower():
+        context.user_data['edit_type'] = 'arrival_time'
+    else:
+        context.user_data['edit_type'] = 'departure_time'
+    keyboard = [['❌ Скасувати']]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
-        '⌚ Введіть новий час у форматі ГГ:ХХ:СС (наприклад, 09:00:00):'
+        '⌚ Введіть новий час у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
+        reply_markup=reply_markup
     )
     return EDIT_REPORT
 
@@ -768,14 +821,19 @@ async def save_edited_time(update: Update, context: CallbackContext) -> int:
     edit_date = context.user_data['edit_date']
     user_id = update.message.from_user.id
     current_date = get_local_time(user_id).date().isoformat()
+    
+    # Перевірка на скасування
+    if new_time in ['❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
+        return await report_menu(update, context)
+    
     try:
-        datetime.strptime(new_time, '%H:%M:%S')
+        parsed_time = parse_time_input(new_time)
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
         c.execute(f'''UPDATE time_records 
                      SET {context.user_data['edit_type']} = ?
                      WHERE date = ? AND user_id = ?''',
-                  (new_time, edit_date, user_id))
+                  (parsed_time, edit_date, user_id))
         conn.commit()
         conn.close()
         if edit_date == current_date:
@@ -785,7 +843,7 @@ async def save_edited_time(update: Update, context: CallbackContext) -> int:
         return await report_menu(update, context)
     except ValueError:
         await update.message.reply_text(
-            '❌ Неправильний формат часу. Будь ласка, використовуйте формат ГГ:ХХ:СС'
+            '❌ Неправильний формат часу. Будь ласка, використовуйте формат ГГ:ХХ або ГГ:ХХ:СС'
         )
         return EDIT_REPORT
 
@@ -825,7 +883,7 @@ async def handle_new_date(update: Update, context: CallbackContext) -> int:
         keyboard = [['❌ Скасувати']]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            '⌚ Введіть час приходу у форматі ГГ:ХХ:СС (наприклад, 09:00:00):',
+            '⌚ Введіть час приходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
             reply_markup=reply_markup
         )
         context.user_data['new_record_type'] = 'arrival_time'
@@ -852,20 +910,20 @@ async def save_new_record(update: Update, context: CallbackContext) -> int:
     if new_time == '↩️ Назад' or new_time == '❌ Скасувати':
         return await edit_report_menu(update, context)
     try:
-        datetime.strptime(new_time, '%H:%M:%S')
+        parsed_time = parse_time_input(new_time)
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
         user_id = update.message.from_user.id
         if context.user_data['new_record_type'] == 'arrival_time':
             c.execute('''INSERT INTO time_records (date, user_id, arrival_time)
                         VALUES (?, ?, ?)''',
-                      (context.user_data['new_date'], user_id, new_time))
+                      (context.user_data['new_date'], user_id, parsed_time))
             conn.commit()
             conn.close()
             keyboard = [['❌ Скасувати']]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
             await update.message.reply_text(
-                '✅ Час приходу записано!\n\n⌚ Тепер введіть час відходу у форматі ГГ:ХХ:СС (наприклад, 18:00:00):',
+                '✅ Час приходу записано!\n\n⌚ Тепер введіть час відходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 18:00 або 18:00:00):',
                 reply_markup=reply_markup
             )
             context.user_data['new_record_type'] = 'departure_time'
@@ -874,7 +932,7 @@ async def save_new_record(update: Update, context: CallbackContext) -> int:
             c.execute('''UPDATE time_records 
                         SET departure_time = ?
                         WHERE date = ? AND user_id = ?''',
-                      (new_time, context.user_data['new_date'], user_id))
+                      (parsed_time, context.user_data['new_date'], user_id))
             conn.commit()
             conn.close()
             keyboard = [
@@ -886,7 +944,7 @@ async def save_new_record(update: Update, context: CallbackContext) -> int:
             return REPORT_MENU
     except ValueError:
         await update.message.reply_text(
-            '❌ Неправильний формат часу. Використовуйте формат ГГ:ХХ:СС\nСпробуйте ще раз:'
+            '❌ Неправильний формат часу. Використовуйте формат ГГ:ХХ або ГГ:ХХ:СС\nСпробуйте ще раз:'
         )
         keyboard = [['❌ Скасувати']]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -942,8 +1000,7 @@ async def show_daily_stats(update: Update, context: CallbackContext) -> int:
             stats = "📊 За сьогодні ще немає записів часу"
     conn.close()
     keyboard = [
-        [get_text(user_id, 'record_time')],
-        [get_text(user_id, 'report')],
+        [get_text(user_id, 'record_time'), get_text(user_id, 'report')],
         [get_text(user_id, 'settings')],
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -953,10 +1010,8 @@ async def show_daily_stats(update: Update, context: CallbackContext) -> int:
 async def settings_menu(update: Update, context: CallbackContext) -> int:
     user_id = update.effective_user.id
     keyboard = [
-        [get_text(user_id, 'reset_time')],
-        [get_text(user_id, 'set_rate')],
-        [get_text(user_id, 'set_timezone')],
-        [get_text(user_id, 'set_language')],
+        [get_text(user_id, 'reset_time'), get_text(user_id, 'set_rate')],
+        [get_text(user_id, 'set_timezone'), get_text(user_id, 'set_language')],
         [get_text(user_id, 'history')],
         [get_text(user_id, 'back')]
     ]
@@ -981,11 +1036,18 @@ async def reset_time(update: Update, context: CallbackContext) -> int:
 
 async def set_hourly_rate(update: Update, context: CallbackContext) -> int:
     user_id = update.effective_user.id
-    await update.message.reply_text(get_text(user_id, 'enter_rate'))
+    keyboard = [['❌ Скасувати']]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+    await update.message.reply_text(get_text(user_id, 'enter_rate'), reply_markup=reply_markup)
     return WAITING_FOR_RATE
 
 async def save_hourly_rate(update: Update, context: CallbackContext) -> int:
     user_id = update.effective_user.id
+    
+    # Перевірка на скасування
+    if update.message.text in ['❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
+        return await settings_menu(update, context)
+    
     try:
         rate = float(update.message.text)
         if rate <= 0:
@@ -1302,7 +1364,7 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
 def main() -> None:
     setup_database()
     logging.getLogger('telegram.ext').setLevel(logging.WARNING)
-    application = Application.builder().token("7631269439:AAGPjfze-xKaMbQZtJNXiTUXxN3JN0E_LmI").build()
+    application = Application.builder().token("7631269439:AAEYbO7hSKxxkz_ggztpv_RpiNU8NmFDAf8").build()
     application.add_handler(CommandHandler('infouser', infouser_command))
     application.add_handler(CommandHandler('exportusers', export_users_command))
     conv_handler = ConversationHandler(
@@ -1315,8 +1377,8 @@ def main() -> None:
                 MessageHandler(filters.TEXT & ~filters.COMMAND, show_daily_stats),
             ],
             TIME_RECORDING: [
-                MessageHandler(filters.Regex('^👋.*приходу|^👋.*arrival|^👋.*przyjścia'), record_arrival),
-                MessageHandler(filters.Regex('^👋.*відходу|^👋.*departure|^👋.*wyjścia'), record_departure),
+                MessageHandler(filters.Regex('^🟢|^👋.*приходу|^👋.*arrival|^👋.*przyjścia'), record_arrival),
+                MessageHandler(filters.Regex('^🔴|^👋.*відходу|^👋.*departure|^👋.*wyjścia'), record_departure),
                 MessageHandler(filters.Regex('^↩️'), start),
             ],
             REPORT_MENU: [
@@ -1355,7 +1417,7 @@ def main() -> None:
                 MessageHandler(filters.TEXT & ~filters.COMMAND, save_new_record),
             ],
             DELETE_CONFIRM: [
-                MessageHandler(filters.Regex('^(✅ Так|❌ Ні)$'), handle_delete_confirmation),
+                CallbackQueryHandler(handle_delete_confirmation, pattern='^delete_'),
             ],
             WAITING_FOR_RATE: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, save_hourly_rate),
@@ -1371,6 +1433,7 @@ def main() -> None:
             ],
         },
         fallbacks=[CommandHandler('start', start)],
+        per_message=False,
     )
     print("\033[5;32m🎉 Бот успішно запущений та готовий до роботи! 🟢\033[0m")
     application.add_handler(conv_handler)
