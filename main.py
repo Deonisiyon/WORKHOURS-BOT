@@ -95,7 +95,55 @@ LANGUAGES = {
         'timezone_set': '✅ Часовий пояс встановлено:',
         'invalid_timezone': '❌ Некоректний часовий пояс. Оберіть із запропонованих.',
         'reset_today': '✅ Записи за сьогодні скинуто.',
-        'no_reset_records': 'ℹ️ Немає записів за сьогодні для скидання.'
+        'no_reset_records': 'ℹ️ Немає записів за сьогодні для скидання.',
+        'cancel': '❌ Скасувати',
+        'new_record': '📝 Новий запис',
+        'delete_record': '🗑️ Видалити запис',
+        'choose_date_or_action': '📅 Оберіть дату для редагування або оберіть дію:',
+        'today_date': '📅 Сьогоднішня дата',
+        'enter_manually': '✍️ Ввести вручну',
+        'creating_new_record': '📝 Створення нового запису\nОберіть опцію (сьогодні: {}):',
+        'choose_date_to_delete': '🗑️ Оберіть дату для видалення:',
+        'confirm_delete': '❓ Ви впевнені, що хочете видалити запис за {}?',
+        'yes': '✅ Так',
+        'no': '❌ Ні',
+        'record_deleted': '✅ Запис за {} видалено',
+        'delete_failed': '❌ Не вдалося видалити запис. Спробуйте пізніше.',
+        'delete_cancelled': '❌ Видалення скасовано',
+        'edit_what': '✏️ Що ви хочете відредагувати для {}?',
+        'arrival_time': '🟢 Час приходу',
+        'departure_time': '🔴 Час відходу',
+        'enter_new_time': '⌚ Введіть новий час у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
+        'time_updated': '✅ Час успішно оновлено!',
+        'time_updated_for_date': '✅ Час за {} успішно оновлено!',
+        'invalid_time_format': '❌ Неправильний формат часу. Будь ласка, використовуйте формат ГГ:ХХ або ГГ:ХХ:СС',
+        'enter_date_format': 'Введіть дату у форматі РРРР-ММ-ДД (наприклад, 2025-01-09):',
+        'no_future_dates': '❌ Не можна створювати записи для майбутніх дат!',
+        'record_exists': '❌ Запис за цю дату вже існує!',
+        'enter_arrival_time': '⌚ Введіть час приходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
+        'arrival_time_saved': '✅ Час приходу записано!\n\n⌚ Тепер введіть час відходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 18:00 або 18:00:00):',
+        'departure_time_saved': '✅ Час відходу записано!',
+        'invalid_date_format': '❌ Неправильний формат дати. Використовуйте формат РРРР-ММ-ДД\nСпробуйте ще раз:',
+        'stats_today': '📊 Статистика за сьогодні:',
+        'arrival': '🕐 Прихід:',
+        'departure': '🕐 Відхід:',
+        'not_recorded_yet': 'ще не записано',
+        'current_shift': '📊 Поточна зміна:',
+        'yesterday': 'вчора',
+        'no_time_records': '📊 За сьогодні ще немає записів часу',
+        'daily_report_title': '📅 Звіт за {}:',
+        'night_shift': 'Нічна зміна (з вчора):',
+        'monthly_report_title': '📈 Звіт за {}:',
+        'choose_month': '📅 Оберіть місяць для перегляду:',
+        'select_specific_day': '📅 Обрати конкретний день',
+        'back_to_month_selection': '↩️ Назад до вибору місяця',
+        'choose_day_detail': '📅 Оберіть день для детального перегляду:',
+        'back_to_report': '↩️ Назад до звіту',
+        'detailed_report_for': '📅 Детальний звіт за {}:',
+        'worked': '⏱ Відпрацьовано:',
+        'no_day_records': '❌ За цей день немає записів.',
+        'date_processing_error': '❌ Помилка при обробці дати. Спробуйте ще раз.',
+        'invalid_language': '❌ Некоректна мова. Оберіть із запропонованих.'
     },
     'en': {
         'welcome_first': '👋 Hello! How can I help you?',
@@ -144,7 +192,55 @@ LANGUAGES = {
         'timezone_set': '✅ Timezone set:',
         'invalid_timezone': '❌ Invalid timezone. Please choose from the suggested options.',
         'reset_today': '✅ Today\'s records have been reset.',
-        'no_reset_records': 'ℹ️ No records for today to reset.'
+        'no_reset_records': 'ℹ️ No records for today to reset.',
+        'cancel': '❌ Cancel',
+        'new_record': '📝 New record',
+        'delete_record': '🗑️ Delete record',
+        'choose_date_or_action': '📅 Choose a date to edit or select an action:',
+        'today_date': '📅 Today\'s date',
+        'enter_manually': '✍️ Enter manually',
+        'creating_new_record': '📝 Creating new record\nChoose option (today: {}):',
+        'choose_date_to_delete': '🗑️ Choose date to delete:',
+        'confirm_delete': '❓ Are you sure you want to delete the record for {}?',
+        'yes': '✅ Yes',
+        'no': '❌ No',
+        'record_deleted': '✅ Record for {} deleted',
+        'delete_failed': '❌ Failed to delete record. Please try again later.',
+        'delete_cancelled': '❌ Deletion cancelled',
+        'edit_what': '✏️ What do you want to edit for {}?',
+        'arrival_time': '🟢 Arrival time',
+        'departure_time': '🔴 Departure time',
+        'enter_new_time': '⌚ Enter new time in HH:MM or HH:MM:SS format (e.g., 09:00 or 09:00:00):',
+        'time_updated': '✅ Time successfully updated!',
+        'time_updated_for_date': '✅ Time for {} successfully updated!',
+        'invalid_time_format': '❌ Invalid time format. Please use HH:MM or HH:MM:SS format',
+        'enter_date_format': 'Enter date in YYYY-MM-DD format (e.g., 2025-01-09):',
+        'no_future_dates': '❌ Cannot create records for future dates!',
+        'record_exists': '❌ Record for this date already exists!',
+        'enter_arrival_time': '⌚ Enter arrival time in HH:MM or HH:MM:SS format (e.g., 09:00 or 09:00:00):',
+        'arrival_time_saved': '✅ Arrival time saved!\n\n⌚ Now enter departure time in HH:MM or HH:MM:SS format (e.g., 18:00 or 18:00:00):',
+        'departure_time_saved': '✅ Departure time saved!',
+        'invalid_date_format': '❌ Invalid date format. Use YYYY-MM-DD format\nTry again:',
+        'stats_today': '📊 Today\'s statistics:',
+        'arrival': '🕐 Arrival:',
+        'departure': '🕐 Departure:',
+        'not_recorded_yet': 'not recorded yet',
+        'current_shift': '📊 Current shift:',
+        'yesterday': 'yesterday',
+        'no_time_records': '📊 No time records for today yet',
+        'daily_report_title': '📅 Report for {}:',
+        'night_shift': 'Night shift (from yesterday):',
+        'monthly_report_title': '📈 Report for {}:',
+        'choose_month': '📅 Choose month to view:',
+        'select_specific_day': '📅 Select specific day',
+        'back_to_month_selection': '↩️ Back to month selection',
+        'choose_day_detail': '📅 Choose day for detailed view:',
+        'back_to_report': '↩️ Back to report',
+        'detailed_report_for': '📅 Detailed report for {}:',
+        'worked': '⏱ Worked:',
+        'no_day_records': '❌ No records for this day.',
+        'date_processing_error': '❌ Error processing date. Please try again.',
+        'invalid_language': '❌ Invalid language. Please choose from the suggested options.'
     },
     'pl': {
         'welcome_first': '👋 Cześć! Jak mogę Ci pomóc?',
@@ -193,7 +289,55 @@ LANGUAGES = {
         'timezone_set': '✅ Strefa czasowa ustawiona:',
         'invalid_timezone': '❌ Nieprawidłowa strefa czasowa. Wybierz z proponowanych opcji.',
         'reset_today': '✅ Dzisiejsze zapisy zostały zresetowane.',
-        'no_reset_records': 'ℹ️ Brak zapisów na dzisiaj do zresetowania.'
+        'no_reset_records': 'ℹ️ Brak zapisów na dzisiaj do zresetowania.',
+        'cancel': '❌ Anuluj',
+        'new_record': '📝 Nowy zapis',
+        'delete_record': '🗑️ Usuń zapis',
+        'choose_date_or_action': '📅 Wybierz datę do edycji lub wybierz akcję:',
+        'today_date': '📅 Dzisiejsza data',
+        'enter_manually': '✍️ Wprowadź ręcznie',
+        'creating_new_record': '📝 Tworzenie nowego zapisu\nWybierz opcję (dzisiaj: {}):',
+        'choose_date_to_delete': '🗑️ Wybierz datę do usunięcia:',
+        'confirm_delete': '❓ Czy na pewno chcesz usunąć zapis z {}?',
+        'yes': '✅ Tak',
+        'no': '❌ Nie',
+        'record_deleted': '✅ Zapis z {} usunięty',
+        'delete_failed': '❌ Nie udało się usunąć zapisu. Spróbuj ponownie później.',
+        'delete_cancelled': '❌ Usuwanie anulowane',
+        'edit_what': '✏️ Co chcesz edytować dla {}?',
+        'arrival_time': '🟢 Czas przyjścia',
+        'departure_time': '🔴 Czas wyjścia',
+        'enter_new_time': '⌚ Wprowadź nowy czas w formacie GG:MM lub GG:MM:SS (np. 09:00 lub 09:00:00):',
+        'time_updated': '✅ Czas pomyślnie zaktualizowany!',
+        'time_updated_for_date': '✅ Czas dla {} pomyślnie zaktualizowany!',
+        'invalid_time_format': '❌ Nieprawidłowy format czasu. Użyj formatu GG:MM lub GG:MM:SS',
+        'enter_date_format': 'Wprowadź datę w formacie RRRR-MM-DD (np. 2025-01-09):',
+        'no_future_dates': '❌ Nie można tworzyć zapisów dla przyszłych dat!',
+        'record_exists': '❌ Zapis dla tej daty już istnieje!',
+        'enter_arrival_time': '⌚ Wprowadź czas przyjścia w formacie GG:MM lub GG:MM:SS (np. 09:00 lub 09:00:00):',
+        'arrival_time_saved': '✅ Czas przyjścia zapisany!\n\n⌚ Teraz wprowadź czas wyjścia w formacie GG:MM lub GG:MM:SS (np. 18:00 lub 18:00:00):',
+        'departure_time_saved': '✅ Czas wyjścia zapisany!',
+        'invalid_date_format': '❌ Nieprawidłowy format daty. Użyj formatu RRRR-MM-DD\nSpróbuj ponownie:',
+        'stats_today': '📊 Statystyki na dzisiaj:',
+        'arrival': '🕐 Przyjście:',
+        'departure': '🕐 Wyjście:',
+        'not_recorded_yet': 'jeszcze nie zapisano',
+        'current_shift': '📊 Bieżąca zmiana:',
+        'yesterday': 'wczoraj',
+        'no_time_records': '📊 Brak zapisów czasu na dzisiaj',
+        'daily_report_title': '📅 Raport za {}:',
+        'night_shift': 'Zmiana nocna (od wczoraj):',
+        'monthly_report_title': '📈 Raport za {}:',
+        'choose_month': '📅 Wybierz miesiąc do wyświetlenia:',
+        'select_specific_day': '📅 Wybierz konkretny dzień',
+        'back_to_month_selection': '↩️ Powrót do wyboru miesiąca',
+        'choose_day_detail': '📅 Wybierz dzień do szczegółowego wyświetlenia:',
+        'back_to_report': '↩️ Powrót do raportu',
+        'detailed_report_for': '📅 Szczegółowy raport za {}:',
+        'worked': '⏱ Przepracowano:',
+        'no_day_records': '❌ Brak zapisów dla tego dnia.',
+        'date_processing_error': '❌ Błąd przetwarzania daty. Spróbuj ponownie.',
+        'invalid_language': '❌ Nieprawidłowy język. Wybierz z proponowanych opcji.'
     }
 }
 
@@ -578,7 +722,7 @@ async def daily_report(update: Update, context: CallbackContext) -> int:
               (current_date_str, yesterday, user_id))
     records = c.fetchall()
     if records:
-        report = f"📅 Звіт за {current_date.strftime('%d %B %Y')}:\n"
+        report = get_text(user_id, 'daily_report_title').format(current_date.strftime('%d %B %Y')) + "\n"
         total_hours = 0
         today_hours = 0
         yesterday_hours = 0
@@ -596,14 +740,14 @@ async def daily_report(update: Update, context: CallbackContext) -> int:
                 total_hours += hours
                 if date == current_date_str:
                     today_hours += hours
-                    report += f"Прихід - {arrival_time}\n"
-                    report += f"Відхід - {departure_time}\n"
+                    report += f"{get_text(user_id, 'arrival')} {arrival_time}\n"
+                    report += f"{get_text(user_id, 'departure')} {departure_time}\n"
                     report += f"{get_text(user_id, 'worked_today')} {hours:.2f} {get_text(user_id, 'hours')}\n"
                 elif date == yesterday:
                     yesterday_hours += hours
-                    report += f"Нічна зміна (з вчора):\n"
-                    report += f"Прихід - {arrival_time} (вчора)\n"
-                    report += f"Відхід - {departure_time}\n"
+                    report += f"{get_text(user_id, 'night_shift')}\n"
+                    report += f"{get_text(user_id, 'arrival')} {arrival_time} ({get_text(user_id, 'yesterday')})\n"
+                    report += f"{get_text(user_id, 'departure')} {departure_time}\n"
                     report += f"{get_text(user_id, 'worked_shift')} {hours:.2f} {get_text(user_id, 'hours')}\n"
         if hourly_rate:
             earnings = total_hours * hourly_rate
@@ -628,7 +772,7 @@ async def monthly_report(update: Update, context: CallbackContext) -> int:
                  ORDER BY date''', (f"{current_month}%", user_id))
     records = c.fetchall()
     if records:
-        report = f"📈 Звіт за {current_date.strftime('%B')}:\n\n"
+        report = get_text(user_id, 'monthly_report_title').format(current_date.strftime('%B')) + "\n\n"
         monthly_total = 0
         current_day = None
         day_hours = 0
@@ -676,40 +820,43 @@ async def edit_report_menu(update: Update, context: CallbackContext) -> int:
                  ORDER BY date DESC''', (f"{current_month}%", user_id))
     records = c.fetchall()
     keyboard = [
-        ['↩️ Назад'],
-        ['📝 Новий запис', '🗑️ Видалити запис']
+        [get_text(user_id, 'back')],
+        [get_text(user_id, 'new_record'), get_text(user_id, 'delete_record')]
     ]
     if records:
         keyboard.extend([[date[0]] for date in records])
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
-        '📅 Оберіть дату для редагування або оберіть дію:',
+        get_text(user_id, 'choose_date_or_action'),
         reply_markup=reply_markup
     )
     conn.close()
     return WAITING_FOR_DATE
 
 async def handle_date_selection(update: Update, context: CallbackContext) -> int:
+    user_id = update.message.from_user.id
     selected_option = update.message.text
-    if selected_option == '↩️ Назад':
+    
+    # Перевірка на "Назад" у всіх мовах
+    if selected_option in [get_text(user_id, 'back'), '↩️ Назад', '↩️ Back', '↩️ Wstecz']:
         return await report_menu(update, context)
-    elif selected_option == '📝 Новий запис':
-        user_id = update.message.from_user.id
+    # Перевірка на "Новий запис" у всіх мовах
+    elif selected_option in [get_text(user_id, 'new_record'), '📝 Новий запис', '📝 New record', '📝 Nowy zapis']:
         current_date = get_local_time(user_id).date().isoformat()
         keyboard = [
-            ['📅 Сьогоднішня дата'],
-            ['✍️ Ввести вручну'],
-            ['↩️ Назад']
+            [get_text(user_id, 'today_date')],
+            [get_text(user_id, 'enter_manually')],
+            [get_text(user_id, 'back')]
         ]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            f'📝 Створення нового запису\nОберіть опцію (сьогодні: {current_date}):',
+            get_text(user_id, 'creating_new_record').format(current_date),
             reply_markup=reply_markup
         )
         return WAITING_FOR_NEW_DATE
-    elif selected_option == '🗑️ Видалити запис':
-        keyboard = [['↩️ Назад']]
-        user_id = update.message.from_user.id
+    # Перевірка на "Видалити запис" у всіх мовах
+    elif selected_option in [get_text(user_id, 'delete_record'), '🗑️ Видалити запис', '🗑️ Delete record', '🗑️ Usuń zapis']:
+        keyboard = [[get_text(user_id, 'back')]]
         current_month = get_local_time(user_id).strftime('%Y-%m')
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
@@ -722,7 +869,7 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
         conn.close()
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            '🗑️ Оберіть дату для видалення:',
+            get_text(user_id, 'choose_date_to_delete'),
             reply_markup=reply_markup
         )
         context.user_data['action'] = 'delete'
@@ -730,23 +877,23 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
     if context.user_data.get('action') == 'delete':
         context.user_data['delete_date'] = selected_option
         keyboard = [
-            [InlineKeyboardButton("✅ Так", callback_data=f"delete_yes_{selected_option}"),
-             InlineKeyboardButton("❌ Ні", callback_data="delete_no")]
+            [InlineKeyboardButton(get_text(user_id, 'yes'), callback_data=f"delete_yes_{selected_option}"),
+             InlineKeyboardButton(get_text(user_id, 'no'), callback_data="delete_no")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(
-            f'❓ Ви впевнені, що хочете видалити запис за {selected_option}?',
+            get_text(user_id, 'confirm_delete').format(selected_option),
             reply_markup=reply_markup
         )
         return DELETE_CONFIRM
     context.user_data['edit_date'] = selected_option
     keyboard = [
-        ['🟢 Час приходу', '🔴 Час відходу'],
-        ['↩️ Назад']
+        [get_text(user_id, 'arrival_time'), get_text(user_id, 'departure_time')],
+        [get_text(user_id, 'back')]
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
-        f'✏️ Що ви хочете відредагувати для {selected_option}?',
+        get_text(user_id, 'edit_what').format(selected_option),
         reply_markup=reply_markup
     )
     return EDIT_TIME
@@ -754,10 +901,10 @@ async def handle_date_selection(update: Update, context: CallbackContext) -> int
 async def handle_delete_confirmation(update: Update, context: CallbackContext) -> int:
     query = update.callback_query
     await query.answer()
+    user_id = update.effective_user.id
     
     if query.data.startswith("delete_yes_"):
         date_to_delete = query.data.replace("delete_yes_", "")
-        user_id = update.effective_user.id
         try:
             conn = sqlite3.connect('timekeeper.db')
             c = conn.cursor()
@@ -765,10 +912,9 @@ async def handle_delete_confirmation(update: Update, context: CallbackContext) -
             c.execute('DELETE FROM time_records WHERE date = ? AND user_id = ?',
                       (date_to_delete, user_id))
             conn.commit()
-            await query.edit_message_text(f'✅ Запис за {date_to_delete} видалено')
+            await query.edit_message_text(get_text(user_id, 'record_deleted').format(date_to_delete))
             conn.close()
             # Повертаємо в головне меню
-            user_id = update.effective_user.id
             keyboard = [
                 [get_text(user_id, 'record_time'), get_text(user_id, 'report')],
                 [get_text(user_id, 'settings')],
@@ -781,12 +927,11 @@ async def handle_delete_confirmation(update: Update, context: CallbackContext) -
             )
             return MAIN_MENU
         except sqlite3.Error:
-            await query.edit_message_text('❌ Не вдалося видалити запис. Спробуйте пізніше.')
+            await query.edit_message_text(get_text(user_id, 'delete_failed'))
             return MAIN_MENU
     else:  # delete_no
-        await query.edit_message_text('❌ Видалення скасовано')
+        await query.edit_message_text(get_text(user_id, 'delete_cancelled'))
         # Повертаємо в меню редагування
-        user_id = update.effective_user.id
         keyboard = [
             [get_text(user_id, 'daily_report'), get_text(user_id, 'monthly_report')],
             [get_text(user_id, 'edit_report'), get_text(user_id, 'back')]
@@ -800,30 +945,35 @@ async def handle_delete_confirmation(update: Update, context: CallbackContext) -
         return REPORT_MENU
 
 async def handle_time_edit(update: Update, context: CallbackContext) -> int:
+    user_id = update.message.from_user.id
     choice = update.message.text
-    if choice == '↩️ Назад':
+    
+    # Перевірка на "Назад" у всіх мовах
+    if choice in [get_text(user_id, 'back'), '↩️ Назад', '↩️ Back', '↩️ Wstecz']:
         return await edit_report_menu(update, context)
-    # Визначаємо тип за емодзі
-    if '🟢' in choice or 'приходу' in choice.lower():
+    
+    # Визначаємо тип за емодзі або текстом
+    if '🟢' in choice or 'arrival' in choice.lower() or 'приход' in choice.lower() or 'przyjś' in choice.lower():
         context.user_data['edit_type'] = 'arrival_time'
     else:
         context.user_data['edit_type'] = 'departure_time'
-    keyboard = [['❌ Скасувати']]
+    
+    keyboard = [[get_text(user_id, 'cancel')]]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
-        '⌚ Введіть новий час у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
+        get_text(user_id, 'enter_new_time'),
         reply_markup=reply_markup
     )
     return EDIT_REPORT
 
 async def save_edited_time(update: Update, context: CallbackContext) -> int:
+    user_id = update.message.from_user.id
     new_time = update.message.text
     edit_date = context.user_data['edit_date']
-    user_id = update.message.from_user.id
     current_date = get_local_time(user_id).date().isoformat()
     
-    # Перевірка на скасування
-    if new_time in ['❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
+    # Перевірка на скасування у всіх мовах
+    if new_time in [get_text(user_id, 'cancel'), '❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
         return await report_menu(update, context)
     
     try:
@@ -837,28 +987,30 @@ async def save_edited_time(update: Update, context: CallbackContext) -> int:
         conn.commit()
         conn.close()
         if edit_date == current_date:
-            await update.message.reply_text('✅ Час успішно оновлено!')
+            await update.message.reply_text(get_text(user_id, 'time_updated'))
         else:
-            await update.message.reply_text(f'✅ Час за {edit_date} успішно оновлено!')
+            await update.message.reply_text(get_text(user_id, 'time_updated_for_date').format(edit_date))
         return await report_menu(update, context)
     except ValueError:
-        await update.message.reply_text(
-            '❌ Неправильний формат часу. Будь ласка, використовуйте формат ГГ:ХХ або ГГ:ХХ:СС'
-        )
+        await update.message.reply_text(get_text(user_id, 'invalid_time_format'))
         return EDIT_REPORT
 
 async def handle_new_date(update: Update, context: CallbackContext) -> int:
-    selected_option = update.message.text
     user_id = update.message.from_user.id
-    if selected_option == '↩️ Назад' or selected_option == '❌ Скасувати':
+    selected_option = update.message.text
+    
+    # Перевірка на "Назад" або "Скасувати" у всіх мовах
+    if selected_option in [get_text(user_id, 'back'), get_text(user_id, 'cancel'), '↩️ Назад', '❌ Скасувати', '↩️ Back', '❌ Cancel', '↩️ Wstecz', '❌ Anuluj']:
         return await edit_report_menu(update, context)
-    elif selected_option == '📅 Сьогоднішня дата':
+    # Перевірка на "Сьогоднішня дата" у всіх мовах
+    elif selected_option in [get_text(user_id, 'today_date'), '📅 Сьогоднішня дата', '📅 Today\'s date', '📅 Dzisiejsza data']:
         new_date = get_local_time(user_id).date().isoformat()
-    elif selected_option == '✍️ Ввести вручну':
-        keyboard = [['❌ Скасувати']]
+    # Перевірка на "Ввести вручну" у всіх мовах
+    elif selected_option in [get_text(user_id, 'enter_manually'), '✍️ Ввести вручну', '✍️ Enter manually', '✍️ Wprowadź ręcznie']:
+        keyboard = [[get_text(user_id, 'cancel')]]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            'Введіть дату у форматі РРРР-ММ-ДД (наприклад, 2025-01-09):',
+            get_text(user_id, 'enter_date_format'),
             reply_markup=reply_markup
         )
         return WAITING_FOR_NEW_DATE
@@ -867,7 +1019,7 @@ async def handle_new_date(update: Update, context: CallbackContext) -> int:
     try:
         input_date = datetime.strptime(new_date, '%Y-%m-%d')
         if input_date.date() > get_local_time(user_id).date():
-            await update.message.reply_text('❌ Не можна створювати записи для майбутніх дат!')
+            await update.message.reply_text(get_text(user_id, 'no_future_dates'))
             return await edit_report_menu(update, context)
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
@@ -877,53 +1029,55 @@ async def handle_new_date(update: Update, context: CallbackContext) -> int:
         existing_record = c.fetchone()
         conn.close()
         if existing_record:
-            await update.message.reply_text('❌ Запис за цю дату вже існує!')
+            await update.message.reply_text(get_text(user_id, 'record_exists'))
             return await edit_report_menu(update, context)
         context.user_data['new_date'] = new_date
-        keyboard = [['❌ Скасувати']]
+        keyboard = [[get_text(user_id, 'cancel')]]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            '⌚ Введіть час приходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 09:00 або 09:00:00):',
+            get_text(user_id, 'enter_arrival_time'),
             reply_markup=reply_markup
         )
         context.user_data['new_record_type'] = 'arrival_time'
         return SAVE_NEW_RECORD
     except ValueError:
-        await update.message.reply_text(
-            '❌ Неправильний формат дати. Використовуйте формат РРРР-ММ-ДД\nСпробуйте ще раз:'
-        )
+        await update.message.reply_text(get_text(user_id, 'invalid_date_format'))
         keyboard = [
-            ['📅 Сьогоднішня дата'],
-            ['✍️ Ввести вручну'],
-            ['↩️ Назад'],
-            ['❌ Скасувати']
+            [get_text(user_id, 'today_date')],
+            [get_text(user_id, 'enter_manually')],
+            [get_text(user_id, 'back')],
+            [get_text(user_id, 'cancel')]
         ]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         await update.message.reply_text(
-            f'📝 Створення нового запису\nОберіть опцію (сьогодні: {get_local_time(user_id).date().isoformat()}):',
+            get_text(user_id, 'creating_new_record').format(get_local_time(user_id).date().isoformat()),
             reply_markup=reply_markup
         )
         return WAITING_FOR_NEW_DATE
 
 async def save_new_record(update: Update, context: CallbackContext) -> int:
+    user_id = update.message.from_user.id
     new_time = update.message.text
-    if new_time == '↩️ Назад' or new_time == '❌ Скасувати':
+    
+    # Перевірка на "Назад" або "Скасувати" у всіх мовах
+    if new_time in [get_text(user_id, 'back'), get_text(user_id, 'cancel'), '↩️ Назад', '❌ Скасувати', '↩️ Back', '❌ Cancel', '↩️ Wstecz', '❌ Anuluj']:
         return await edit_report_menu(update, context)
+    
     try:
         parsed_time = parse_time_input(new_time)
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
-        user_id = update.message.from_user.id
+        
         if context.user_data['new_record_type'] == 'arrival_time':
             c.execute('''INSERT INTO time_records (date, user_id, arrival_time)
                         VALUES (?, ?, ?)''',
                       (context.user_data['new_date'], user_id, parsed_time))
             conn.commit()
             conn.close()
-            keyboard = [['❌ Скасувати']]
+            keyboard = [[get_text(user_id, 'cancel')]]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
             await update.message.reply_text(
-                '✅ Час приходу записано!\n\n⌚ Тепер введіть час відходу у форматі ГГ:ХХ або ГГ:ХХ:СС (наприклад, 18:00 або 18:00:00):',
+                get_text(user_id, 'arrival_time_saved'),
                 reply_markup=reply_markup
             )
             context.user_data['new_record_type'] = 'departure_time'
@@ -935,18 +1089,11 @@ async def save_new_record(update: Update, context: CallbackContext) -> int:
                       (parsed_time, context.user_data['new_date'], user_id))
             conn.commit()
             conn.close()
-            keyboard = [
-                ['📅 ЗВІТ ЗА СЬОГОДНІ', '📈 ЗВІТ ЗА МІСЯЦЬ'],
-                ['✏️ Редагувати звіт', '↩️ Назад']
-            ]
-            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-            await update.message.reply_text('✅ Час відходу записано!', reply_markup=reply_markup)
-            return REPORT_MENU
+            await update.message.reply_text(get_text(user_id, 'departure_time_saved'))
+            return await report_menu(update, context)
     except ValueError:
-        await update.message.reply_text(
-            '❌ Неправильний формат часу. Використовуйте формат ГГ:ХХ або ГГ:ХХ:СС\nСпробуйте ще раз:'
-        )
-        keyboard = [['❌ Скасувати']]
+        await update.message.reply_text(get_text(user_id, 'invalid_time_format'))
+        keyboard = [[get_text(user_id, 'cancel')]]
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
         return SAVE_NEW_RECORD
 
@@ -972,16 +1119,16 @@ async def show_daily_stats(update: Update, context: CallbackContext) -> int:
             worked_time = departure_dt - arrival_dt
             hours = worked_time.total_seconds() / 3600
             stats = (
-                "📊 Статистика за сьогодні:\n\n"
-                f"🕐 Прихід: {arrival_time}\n"
-                f"🕐 Відхід: {departure_time}\n"
+                f"{get_text(user_id, 'stats_today')}\n\n"
+                f"{get_text(user_id, 'arrival')} {arrival_time}\n"
+                f"{get_text(user_id, 'departure')} {departure_time}\n"
                 f"{get_text(user_id, 'worked_today')} {hours:.2f} {get_text(user_id, 'hours')}"
             )
         else:
             stats = (
-                "📊 Статистика за сьогодні:\n\n"
-                f"🕐 Прихід: {arrival_time}\n"
-                "🕐 Відхід: ще не записано"
+                f"{get_text(user_id, 'stats_today')}\n\n"
+                f"{get_text(user_id, 'arrival')} {arrival_time}\n"
+                f"{get_text(user_id, 'departure')} {get_text(user_id, 'not_recorded_yet')}"
             )
     else:
         yesterday = (current_date - timedelta(days=1)).isoformat()
@@ -992,12 +1139,12 @@ async def show_daily_stats(update: Update, context: CallbackContext) -> int:
         yesterday_record = c.fetchone()
         if yesterday_record:
             stats = (
-                "📊 Поточна зміна:\n\n"
-                f"🕐 Прихід: {yesterday_record[0]} (вчора)\n"
-                "🕐 Відхід: ще не записано"
+                f"{get_text(user_id, 'current_shift')}\n\n"
+                f"{get_text(user_id, 'arrival')} {yesterday_record[0]} ({get_text(user_id, 'yesterday')})\n"
+                f"{get_text(user_id, 'departure')} {get_text(user_id, 'not_recorded_yet')}"
             )
         else:
-            stats = "📊 За сьогодні ще немає записів часу"
+            stats = get_text(user_id, 'no_time_records')
     conn.close()
     keyboard = [
         [get_text(user_id, 'record_time'), get_text(user_id, 'report')],
@@ -1036,7 +1183,7 @@ async def reset_time(update: Update, context: CallbackContext) -> int:
 
 async def set_hourly_rate(update: Update, context: CallbackContext) -> int:
     user_id = update.effective_user.id
-    keyboard = [['❌ Скасувати']]
+    keyboard = [[get_text(user_id, 'cancel')]]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(get_text(user_id, 'enter_rate'), reply_markup=reply_markup)
     return WAITING_FOR_RATE
@@ -1044,14 +1191,14 @@ async def set_hourly_rate(update: Update, context: CallbackContext) -> int:
 async def save_hourly_rate(update: Update, context: CallbackContext) -> int:
     user_id = update.effective_user.id
     
-    # Перевірка на скасування
-    if update.message.text in ['❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
+    # Перевірка на скасування у всіх мовах
+    if update.message.text in [get_text(user_id, 'cancel'), '❌ Скасувати', '❌ Cancel', '❌ Anuluj']:
         return await settings_menu(update, context)
     
     try:
         rate = float(update.message.text)
         if rate <= 0:
-            raise ValueError("Ставка повинна бути більше 0")
+            raise ValueError(get_text(user_id, 'invalid_rate'))
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
         c.execute('''INSERT OR REPLACE INTO hourly_rates (user_id, rate)
@@ -1111,7 +1258,8 @@ async def save_language(update: Update, context: CallbackContext) -> int:
     selected_language = update.message.text
     user_id = update.effective_user.id
     
-    if selected_language == get_text(user_id, 'back'):
+    # Перевірка на "Назад" у всіх мовах
+    if selected_language in [get_text(user_id, 'back'), '↩️ Назад', '↩️ Back', '↩️ Wstecz']:
         return await settings_menu(update, context)
     
     # Визначаємо код мови
@@ -1124,7 +1272,7 @@ async def save_language(update: Update, context: CallbackContext) -> int:
         language_code = 'pl'
     
     if not language_code:
-        await update.message.reply_text('❌ Некоректна мова. Оберіть із запропонованих.')
+        await update.message.reply_text(get_text(user_id, 'invalid_language'))
         return SET_LANGUAGE
     
     conn = sqlite3.connect('timekeeper.db')
@@ -1150,24 +1298,26 @@ async def view_past_reports(update: Update, context: CallbackContext) -> int:
     ''', (user_id,))
     months = c.fetchall()
     conn.close()
-    keyboard = [['↩️ Назад']]
+    keyboard = [[get_text(user_id, 'back')]]
     for month in months:
         date_obj = datetime.strptime(month[0], '%Y-%m')
         formatted_month = date_obj.strftime('%B %Y')
         keyboard.append([formatted_month])
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    await update.message.reply_text('📅 Оберіть місяць для перегляду:', reply_markup=reply_markup)
+    await update.message.reply_text(get_text(user_id, 'choose_month'), reply_markup=reply_markup)
     return SELECT_MONTH
 
 async def view_selected_month_report(update: Update, context: CallbackContext) -> int:
+    user_id = update.effective_user.id
     selected_month = update.message.text
-    if selected_month == '↩️ Назад':
+    
+    # Перевірка на "Назад" у всіх мовах
+    if selected_month in [get_text(user_id, 'back'), '↩️ Назад', '↩️ Back', '↩️ Wstecz']:
         return await settings_menu(update, context)
     try:
         date_obj = datetime.strptime(selected_month, '%B %Y')
         month_db_format = date_obj.strftime('%Y-%m')
         context.user_data['selected_month'] = month_db_format
-        user_id = update.effective_user.id
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
         c.execute('SELECT rate FROM hourly_rates WHERE user_id = ?', (user_id,))
@@ -1181,7 +1331,7 @@ async def view_selected_month_report(update: Update, context: CallbackContext) -
         ''', (f"{month_db_format}%", user_id))
         records = c.fetchall()
         if records:
-            report = f"📈 Звіт за {selected_month}:\n\n"
+            report = get_text(user_id, 'monthly_report_title').format(selected_month) + "\n\n"
             monthly_total = 0
             current_day = None
             day_hours = 0
@@ -1198,37 +1348,41 @@ async def view_selected_month_report(update: Update, context: CallbackContext) -
                     hours = time_diff.total_seconds() / 3600
                     if date != current_day:
                         if current_day:
-                            report += f"{current_day}: {day_hours:.2f} годин\n"
+                            report += f"{current_day}: {day_hours:.2f} {get_text(user_id, 'hours')}\n"
                         current_day = date
                         day_hours = hours
                     else:
                         day_hours += hours
                     monthly_total += hours
             if current_day:
-                report += f"{current_day}: {day_hours:.2f} годин\n"
-            report += f"\n⏱ Всього відпрацьовано за місяць: {monthly_total:.2f} годин"
+                report += f"{current_day}: {day_hours:.2f} {get_text(user_id, 'hours')}\n"
+            report += f"\n{get_text(user_id, 'worked_month')} {monthly_total:.2f} {get_text(user_id, 'hours')}"
             if hourly_rate:
                 monthly_earnings = monthly_total * hourly_rate
-                report += f"\n💰 Заробіток за місяць: {monthly_earnings:.2f} PLN"
+                report += f"\n{get_text(user_id, 'earnings_month')} {monthly_earnings:.2f} PLN"
             keyboard = [
-                ['📅 Обрати конкретний день'],
-                ['↩️ Назад до вибору місяця']
+                [get_text(user_id, 'select_specific_day')],
+                [get_text(user_id, 'back_to_month_selection')]
             ]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
             await update.message.reply_text(report, reply_markup=reply_markup)
             return VIEW_SELECTED_REPORT
         else:
-            await update.message.reply_text("❌ За цей місяць немає записів.")
+            await update.message.reply_text(get_text(user_id, 'no_records_month'))
             return await view_past_reports(update, context)
     except ValueError:
-        await update.message.reply_text("❌ Помилка при обробці дати. Спробуйте ще раз.")
+        await update.message.reply_text(get_text(user_id, 'date_processing_error'))
         return SELECT_MONTH
 
 async def handle_selected_report(update: Update, context: CallbackContext) -> int:
+    user_id = update.effective_user.id
     choice = update.message.text
-    if choice == '↩️ Назад до вибору місяця':
+    
+    # Перевірка на "Назад до вибору місяця" у всіх мовах
+    if choice in [get_text(user_id, 'back_to_month_selection'), '↩️ Назад до вибору місяця', '↩️ Back to month selection', '↩️ Powrót do wyboru miesiąca']:
         return await view_past_reports(update, context)
-    elif choice == '📅 Обрати конкретний день':
+    # Перевірка на "Обрати конкретний день" у всіх мовах
+    elif choice in [get_text(user_id, 'select_specific_day'), '📅 Обрати конкретний день', '📅 Select specific day', '📅 Wybierz konkretny dzień']:
         selected_month = context.user_data.get('selected_month')
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
@@ -1237,30 +1391,32 @@ async def handle_selected_report(update: Update, context: CallbackContext) -> in
             FROM time_records
             WHERE date LIKE ? AND user_id = ?
             ORDER BY date DESC
-        ''', (f"{selected_month}%", update.effective_user.id))
+        ''', (f"{selected_month}%", user_id))
         days = c.fetchall()
         conn.close()
-        keyboard = [['↩️ Назад до звіту']]
+        keyboard = [[get_text(user_id, 'back_to_report')]]
         for day in days:
             date_obj = datetime.strptime(day[0], '%Y-%m-%d')
             formatted_date = date_obj.strftime('%d %B %Y')
             keyboard.append([formatted_date])
         reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-        await update.message.reply_text('📅 Оберіть день для детального перегляду:', reply_markup=reply_markup)
+        await update.message.reply_text(get_text(user_id, 'choose_day_detail'), reply_markup=reply_markup)
         return SELECT_DAY
     return VIEW_SELECTED_REPORT
 
 async def view_selected_day_report(update: Update, context: CallbackContext) -> int:
+    user_id = update.effective_user.id
     selected_day = update.message.text
-    if selected_day == '↩️ Назад до звіту':
+    
+    # Перевірка на "Назад до звіту" у всіх мовах
+    if selected_day in [get_text(user_id, 'back_to_report'), '↩️ Назад до звіту', '↩️ Back to report', '↩️ Powrót do raportu']:
         month = context.user_data.get('selected_month')
         if month:
             keyboard = [
-                ['📅 Обрати конкретний день'],
-                ['↩️ Назад до вибору місяця']
+                [get_text(user_id, 'select_specific_day')],
+                [get_text(user_id, 'back_to_month_selection')]
             ]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-            user_id = update.effective_user.id
             conn = sqlite3.connect('timekeeper.db')
             c = conn.cursor()
             c.execute('SELECT rate FROM hourly_rates WHERE user_id = ?', (user_id,))
@@ -1276,7 +1432,7 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
             if records:
                 date_obj = datetime.strptime(month, '%Y-%m')
                 formatted_month = date_obj.strftime('%B %Y')
-                report = f"📈 Звіт за {formatted_month}:\n\n"
+                report = get_text(user_id, 'monthly_report_title').format(formatted_month) + "\n\n"
                 monthly_total = 0
                 current_day = None
                 day_hours = 0
@@ -1293,18 +1449,18 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
                         hours = time_diff.total_seconds() / 3600
                         if date != current_day:
                             if current_day:
-                                report += f"{current_day}: {day_hours:.2f} годин\n"
+                                report += f"{current_day}: {day_hours:.2f} {get_text(user_id, 'hours')}\n"
                             current_day = date
                             day_hours = hours
                         else:
                             day_hours += hours
                         monthly_total += hours
                 if current_day:
-                    report += f"{current_day}: {day_hours:.2f} годин\n"
-                report += f"\n⏱ Всього відпрацьовано за місяць: {monthly_total:.2f} годин"
+                    report += f"{current_day}: {day_hours:.2f} {get_text(user_id, 'hours')}\n"
+                report += f"\n{get_text(user_id, 'worked_month')} {monthly_total:.2f} {get_text(user_id, 'hours')}"
                 if hourly_rate:
                     monthly_earnings = monthly_total * hourly_rate
-                    report += f"\n💰 Заробіток за місяць: {monthly_earnings:.2f} PLN"
+                    report += f"\n{get_text(user_id, 'earnings_month')} {monthly_earnings:.2f} PLN"
                 await update.message.reply_text(report, reply_markup=reply_markup)
                 conn.close()
                 return VIEW_SELECTED_REPORT
@@ -1313,7 +1469,6 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
     try:
         date_obj = datetime.strptime(selected_day, '%d %B %Y')
         date_db_format = date_obj.strftime('%Y-%m-%d')
-        user_id = update.effective_user.id
         conn = sqlite3.connect('timekeeper.db')
         c = conn.cursor()
         c.execute('SELECT rate FROM hourly_rates WHERE user_id = ?', (user_id,))
@@ -1327,7 +1482,7 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
         record = c.fetchone()
         if record:
             arrival_time, departure_time = record
-            report = f"📅 Детальний звіт за {selected_day}:\n\n"
+            report = get_text(user_id, 'detailed_report_for').format(selected_day) + "\n\n"
             if arrival_time and departure_time:
                 arrival_dt = datetime.strptime(f"{date_db_format} {arrival_time}", '%Y-%m-%d %H:%M:%S')
                 departure_dt = datetime.strptime(f"{date_db_format} {departure_time}", '%Y-%m-%d %H:%M:%S')
@@ -1338,33 +1493,33 @@ async def view_selected_day_report(update: Update, context: CallbackContext) -> 
                 worked_time = departure_dt - arrival_dt
                 hours = worked_time.total_seconds() / 3600
                 report += (
-                    f"🕐 Час приходу: {arrival_time}\n"
-                    f"🕐 Час відходу: {departure_time}\n"
-                    f"⏱ Відпрацьовано: {hours:.2f} годин"
+                    f"{get_text(user_id, 'arrival')} {arrival_time}\n"
+                    f"{get_text(user_id, 'departure')} {departure_time}\n"
+                    f"{get_text(user_id, 'worked')} {hours:.2f} {get_text(user_id, 'hours')}"
                 )
                 if hourly_rate:
                     earnings = hours * hourly_rate
-                    report += f"\n💰 Заробіток: {earnings:.2f} PLN"
+                    report += f"\n{get_text(user_id, 'earnings')} {earnings:.2f} PLN"
             else:
                 report += (
-                    f"🕐 Час приходу: {arrival_time}\n"
-                    "🕐 Час відходу: не записано"
+                    f"{get_text(user_id, 'arrival')} {arrival_time}\n"
+                    f"{get_text(user_id, 'departure')} {get_text(user_id, 'not_recorded_yet')}"
                 )
-            keyboard = [['↩️ Назад до звіту']]
+            keyboard = [[get_text(user_id, 'back_to_report')]]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
             await update.message.reply_text(report, reply_markup=reply_markup)
         else:
-            await update.message.reply_text("❌ За цей день немає записів.")
+            await update.message.reply_text(get_text(user_id, 'no_day_records'))
         conn.close()
         return SELECT_DAY
     except ValueError:
-        await update.message.reply_text("❌ Помилка при обробці дати. Спробуйте ще раз.")
+        await update.message.reply_text(get_text(user_id, 'date_processing_error'))
         return SELECT_DAY
 
 def main() -> None:
     setup_database()
     logging.getLogger('telegram.ext').setLevel(logging.WARNING)
-    application = Application.builder().token("7631269439:AAEYbO7hSKxxkz_ggztpv_RpiNU8NmFDAf8").build()
+    application = Application.builder().token("7631269439:AAGPjfze-xKaMbQZtJNXiTUXxN3JN0E_LmI").build()
     application.add_handler(CommandHandler('infouser', infouser_command))
     application.add_handler(CommandHandler('exportusers', export_users_command))
     conv_handler = ConversationHandler(
